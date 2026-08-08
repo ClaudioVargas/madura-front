@@ -1,0 +1,16 @@
+<mat-nav-list class="sidebar-list">
+  @for (item of navItems; track item.route) {
+    <a mat-list-item [routerLink]="item.route" routerLinkActive="active-link">
+      <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+      <span matLine>{{ item.label }}</span>
+    </a>
+  }
+
+  <mat-divider></mat-divider>
+
+  <!-- Botón extra (ejemplo: cerrar sesión) -->
+  <button mat-button class="logout-button">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-nav-list>

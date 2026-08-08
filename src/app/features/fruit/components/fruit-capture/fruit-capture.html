@@ -1,0 +1,9 @@
+<div class="fruit-capture">
+    <button (click)="startCamera()">🎬 Iniciar Cámara</button>
+    <video #video autoplay></video>
+    <canvas #canvas hidden></canvas>
+    <button (click)="capture()">📷 Capturar</button>
+    @if(fruitState()) {
+        <p >Estado de la fruta: {{ fruitState() }}</p>
+    } 
+</div>

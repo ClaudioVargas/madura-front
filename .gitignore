@@ -6,6 +6,27 @@
 /out-tsc
 /bazel-out
 
+# =========================================================================
+# Environments and Local Configuration
+# =========================================================================
+# Entornos generales y variables de desarrollo local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# Carpetas de configuración de entorno específicas del framework (Angular, etc.)
+/environments/
+/src/environments/
+
+# Archivos de credenciales y llaves privadas
+*.pem
+*.key
+*.cert
+/config/jwt/
+
 # Node
 /node_modules
 npm-debug.log

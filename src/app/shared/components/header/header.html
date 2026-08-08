@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <!-- Botón menú hamburguesa (visible en mobile) -->
+  <button mat-icon-button class="menu-button" (click)="onToggleSidebar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Logo -->
+  <span class="logo">MiApp</span>
+
+  <!-- Buscador global -->
+  <span class="spacer"></span>
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Buscar</mat-label>
+    <input matInput #searchInput (keyup.enter)="onSearch(searchInput.value)">
+    <button mat-icon-button matSuffix (click)="onSearch(searchInput.value)">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <!-- Notificaciones -->
+  <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+    <mat-icon matBadge="{{notifications.length}}" matBadgeColor="accent">notifications</mat-icon>
+  </button>
+  <mat-menu #notificationsMenu="matMenu">
+    <ng-container *ngFor="let notif of notifications">
+      <button mat-menu-item>{{ notif.message }}</button>
+    </ng-container>
+  </mat-menu>
+
+  <!-- Perfil de usuario -->
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item (click)="onProfileAction('perfil')">
+      <mat-icon>person</mat-icon>
+      <span>Perfil</span>
+    </button>
+    <button mat-menu-item (click)="onProfileAction('logout')">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

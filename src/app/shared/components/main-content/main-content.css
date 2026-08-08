@@ -1,0 +1,10 @@
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background-color: #fafafa;
+  min-height: calc(100vh - 128px); /* resta header + footer*/
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+}

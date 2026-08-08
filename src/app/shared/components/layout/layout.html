@@ -1,0 +1,25 @@
+<mat-sidenav-container class="layout-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidebar mode="side" [(opened)]="isSidebarOpen" class="sidebar">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <!-- Header -->
+    <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+
+    <!-- Main + Secondary Content -->
+    <div class="content-wrapper">
+      <main class="main-content">
+        <router-outlet></router-outlet>
+      </main>
+      <aside class="secondary-content">
+        <app-secondary-content></app-secondary-content>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,9 @@
+@if(fruitState(); as estado) {
+    <div [style.color]="fruitColor()">
+        <h2>🍎 Estado de la fruta: {{ estado }}</h2>
+    </div>
+} @else {
+    <div>
+        <p>No hay evaluación disponible aún.</p>
+    </div>
+}

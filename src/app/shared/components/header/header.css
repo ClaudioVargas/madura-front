@@ -1,0 +1,31 @@
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 8px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .search-field {
+    width: 300px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .menu-button {
+    margin-right: 8px;
+
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}

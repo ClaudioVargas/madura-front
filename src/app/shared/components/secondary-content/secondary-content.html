@@ -1,0 +1,39 @@
+<div class="secondary-panel">
+  <!-- Panel de filtros -->
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>filter_list</mat-icon>
+        Filtros
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-nav-list>
+      @for (filter of filters; track filter.label) {
+        <a mat-list-item>
+          <mat-icon matListIcon>{{ filter.icon }}</mat-icon>
+          <span matLine>{{ filter.label }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-expansion-panel>
+
+  <!-- Panel de widgets -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>widgets</mat-icon>
+        Widgets
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-nav-list>
+      @for (widget of widgets; track widget.title) {
+        <a mat-list-item>
+          <mat-icon matListIcon>{{ widget.icon }}</mat-icon>
+          <span matLine>{{ widget.title }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-expansion-panel>
+</div>

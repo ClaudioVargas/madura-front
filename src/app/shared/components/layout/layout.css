@@ -1,0 +1,32 @@
+.layout-container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 128px); // resta header + footer
+
+  .main-content {
+    flex: 1;
+    padding: 16px;
+  }
+
+  .secondary-content {
+    width: 300px;
+    border-left: 1px solid #e0e0e0;
+    padding: 16px;
+
+    @media (max-width: 1024px) {
+      display: none; // ocultar en pantallas pequeñas
+    }
+  }
+}
+
+app-footer {
+  margin-top: auto;
+}
