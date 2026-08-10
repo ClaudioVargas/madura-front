@@ -9,7 +9,7 @@
 .content-wrapper {
   display: flex;
   flex-direction: row;
-  min-height: calc(100vh - 128px); // resta header + footer
+  min-height: calc(100vh - 128px); /* resta header + footer */
 
   .main-content {
     flex: 1;
@@ -22,7 +22,7 @@
     padding: 16px;
 
     @media (max-width: 1024px) {
-      display: none; // ocultar en pantallas pequeñas
+      display: none; 
     }
   }
 }
