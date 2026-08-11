@@ -6,11 +6,11 @@ export const appRoutes: Routes = [
     loadChildren: () =>
       import('./features/fruit/fruit.routes').then((m) => m.fruitRoutes),
   },
-//   {
-//     path: 'vegetables',
-//     loadChildren: () =>
-//       import('./features/vegetable/vegetable.routes').then((m) => m.vegetableRoutes),
-//   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./features/login/login.routes').then((m) => m.loginRoutes),
+  },
   {
     path: '',
     redirectTo: 'fruits/capture',

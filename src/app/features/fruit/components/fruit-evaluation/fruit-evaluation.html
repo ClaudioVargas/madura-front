@@ -1,9 +1,25 @@
-@if(fruitState(); as estado) {
-    <div [style.color]="fruitColor()">
-        <h2>🍎 Estado de la fruta: {{ estado }}</h2>
+@if (fruitState(); as estado) {
+  <section class="evaluation-card" [style.borderColor]="fruitColor()">
+    <div class="evaluation-header">
+      <div class="evaluation-icon" [style.color]="fruitColor()" [attr.aria-label]="estado">
+        {{ fruitIcon() }}
+      </div>
+      <div class="evaluation-title-block">
+        <p class="evaluation-label">Respuesta de evaluación</p>
+        <h2>Estado de la fruta</h2>
+      </div>
     </div>
+
+    <div class="status-pill" [style.color]="fruitColor()" [style.borderColor]="fruitColor()">
+      {{ estado | titlecase }}
+    </div>
+
+    <p class="evaluation-message">{{ fruitMessage() }}</p>
+  </section>
 } @else {
-    <div>
-        <p>No hay evaluación disponible aún.</p>
-    </div>
+  <section class="evaluation-card empty-state">
+    <div class="evaluation-icon" aria-label="Sin evaluación">🍊</div>
+    <h2>Sin evaluación</h2>
+    <p>No hay información disponible aún. Sube una fruta para comenzar la evaluación.</p>
+  </section>
 }

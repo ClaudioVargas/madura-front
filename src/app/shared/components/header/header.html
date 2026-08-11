@@ -19,18 +19,19 @@
 
   <!-- Notificaciones -->
   <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
-    <mat-icon matBadge="{{ notifications.length }}" matBadgeColor="accent">
+    <mat-icon matBadge="{{ notifications.length }}" matBadgeColor="accent" aria-hidden="false"
+      aria-label="Notificaciones: {{ notifications.length }}">
       notifications
     </mat-icon>
   </button>
   <mat-menu #notificationsMenu="matMenu">
     @for (notif of notifications; track notif.id) {
-      <button mat-menu-item>{{ notif.message }}</button>
+    <button mat-menu-item>{{ notif.message }}</button>
     }
   </mat-menu>
 
   <!-- Perfil de usuario -->
-  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+  <!-- <button mat-icon-button [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #profileMenu="matMenu">
@@ -42,5 +43,25 @@
       <mat-icon>logout</mat-icon>
       <span>Cerrar sesión</span>
     </button>
-  </mat-menu>
+  </mat-menu> -->
+  @if(isAuthenticated()){
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item (click)="onProfileAction('perfil')">
+        <mat-icon>person</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item (click)="onProfileAction('logout')">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+  }
+  @else {
+    <button mat-icon-button (click)="goToLogin()" aria-label="Iniciar sesión">
+      <mat-icon>login</mat-icon>
+    </button>
+  }
 </mat-toolbar>

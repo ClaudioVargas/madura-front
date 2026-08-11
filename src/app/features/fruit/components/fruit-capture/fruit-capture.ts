@@ -1,10 +1,11 @@
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { CameraService } from '../../../services/camera-service';
 import { FruitEvaluationService } from '../../../../core/services/fruit-evaluation-service';
+import { FruitEvaluation } from '../fruit-evaluation/fruit-evaluation';
 
 @Component({
   selector: 'app-fruit-capture',
-  imports: [],
+  imports: [FruitEvaluation],
   templateUrl: './fruit-capture.html',
   styleUrl: './fruit-capture.css',
 })

@@ -4,6 +4,6 @@
     <canvas #canvas hidden></canvas>
     <button (click)="capture()">📷 Capturar</button>
     @if(fruitState()) {
-        <p >Estado de la fruta: {{ fruitState() }}</p>
+         <app-fruit-evaluation></app-fruit-evaluation>
     } 
 </div>

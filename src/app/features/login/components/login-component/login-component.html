@@ -1,0 +1,15 @@
+<div class="login-container">
+    <h2>Iniciar Sesión</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+        <app-ui-input formControlName="username" label="Usuario" placeholder="Ingresa tu usuario"></app-ui-input>
+        <app-ui-input formControlName="password" label="Contraseña" type="password"
+            placeholder="Ingresa tu contraseña"></app-ui-input>
+
+        <app-ui-button type="submit" [disabled]="isSubmitting()">Ingresar</app-ui-button>
+    </form>
+
+    <div class="help">
+        <a routerLink="/forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+</div>
