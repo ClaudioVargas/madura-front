@@ -30,7 +30,7 @@ export class FruitEvaluationService {
     try {
       // Reemplazo moderno de .toPromise()
       const res = await firstValueFrom(
-        this.http.post<FruitEvaluationResponse>(`${this.baseUrl}/evaluate-fruit`, formData)
+        this.http.post<FruitEvaluationResponse>(`${this.baseUrl}/fotos/evaluate`, formData)
       );
 
       if (res) {

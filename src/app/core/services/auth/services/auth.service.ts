@@ -1,8 +1,9 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../../../../../environments/environment.development';
 
 export interface LoginResponse {
   token: string;
@@ -14,6 +15,7 @@ export class AuthService {
   private _token = signal<string | null>(this.getTokenFromStorage());
   private http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
+  readonly urlbase = environment.apiUrl;
 
   // computed para exponer si está autenticado (se puede usar desde componentes)
   readonly isAuthenticated = computed(() => !!this._token());
@@ -26,9 +28,22 @@ export class AuthService {
 
   // Observable para iniciar sesión
   login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('/api/auth/login', { username, password })
+    const body = new HttpParams()
+      .set('grant_type', 'password')
+      .set('username', username)
+      .set('password', password)
+      .set('scope', '')
+      .set('client_id', 'string')
+      .set('client_secret', '********');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'accept': 'application/json'
+    });
+    return this.http.post<LoginResponse>(`${this.urlbase}/auth/token`, body.toString(), {headers })
       .pipe(
         tap(res => {
+          console.log("res", res)
           localStorage.setItem('token', res.token);
           this._token.set(res.token);
         })
