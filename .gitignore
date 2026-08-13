@@ -17,9 +17,6 @@
 .env.production.local
 *.env
 
-# Carpetas de configuración de entorno específicas del framework (Angular, etc.)
-/environments/
-/src/environments/
 
 # Archivos de credenciales y llaves privadas
 *.pem
