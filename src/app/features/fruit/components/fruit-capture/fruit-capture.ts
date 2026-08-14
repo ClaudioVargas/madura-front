@@ -10,8 +10,9 @@ import { FruitEvaluation } from '../fruit-evaluation/fruit-evaluation';
   styleUrl: './fruit-capture.css',
 })
 export class FruitCapture {
+ // El video y canvas ahora siempre están en el DOM, usar static: true para resolverlos en la creación
  @ViewChild('video', { static: true }) video!: ElementRef<HTMLVideoElement>;
-  @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+ @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
   private cameraService = inject(CameraService);
   private apiService = inject(FruitEvaluationService);

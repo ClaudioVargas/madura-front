@@ -1,9 +1,26 @@
-<div class="fruit-capture">
-    <button (click)="startCamera()">🎬 Iniciar Cámara</button>
-    <video #video autoplay></video>
+<div class="fruit-capture root">
+  <!-- Contenedor de cámara siempre presente para que ViewChild pueda resolver los elementos -->
+  <div class="camera-container">
+    <video #video autoplay playsinline class="camera-video" [hidden]="!cameraStarted()"></video>
     <canvas #canvas hidden></canvas>
-    <button (click)="capture()">📷 Capturar</button>
+
+    <!-- Botón grande y redondo centrado que inicia la cámara (se muestra solo cuando cameraStarted() es false) -->
+    @if(!cameraStarted()) {
+      <button (click)="startCamera()" class="start-button">Iniciar</button>
+    }
+
+    <!-- Botón Evaluar debajo del video, centrado (se muestra solo cuando cameraStarted() es true) -->
+    @if(cameraStarted()) {
+      <button (click)="capture()" class="evaluate-button">Evaluar</button>
+    }
+
+    <!-- Si hay resultado, mostrar la evaluación centrada en pantalla (overlay) -->
     @if(fruitState()) {
-         <app-fruit-evaluation></app-fruit-evaluation>
-    } 
+      <div class="evaluation-overlay">
+        <div class="evaluation-wrapper"> 
+          <app-fruit-evaluation></app-fruit-evaluation>
+        </div>
+      </div>
+    }
+  </div>
 </div>

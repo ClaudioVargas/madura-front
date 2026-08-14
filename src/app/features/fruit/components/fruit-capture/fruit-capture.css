@@ -1,3 +1,91 @@
-.fruit-capture {
-    border: 1px solid #ccc;
+:host, .fruit-capture { box-sizing: border-box; }
+
+/* Root full-screen layout */
+.fruit-capture.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #f8fafc; /* tono claro en lugar de negro */
+}
+
+/* Camera area */
+.camera-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.camera-video {
+  width: 100%;
+  height: calc(100% - 96px);
+  object-fit: cover;
+  display: block;
+  background: #f8fafc; /* tono claro consistente con el root */
+}
+
+/* Start button (large, round, centered) - absolute centering inside camera-container */
+.start-button {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #0ea5a4;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(14,165,164,0.18);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+/* Botón Evaluar centrado bajo el video */
+.evaluate-button {
+  margin-top: 12px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+  align-self: center; /* centrar dentro del flex-column */
+  z-index: 2;
+}
+
+/* Evaluation overlay centered */
+.evaluation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* let clicks pass through except inside wrapper */
+  z-index: 4;
+}
+
+.evaluation-wrapper {
+  pointer-events: auto;
+  max-width: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }

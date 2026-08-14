@@ -29,7 +29,7 @@ import { Footer } from '../footer/footer';
   styleUrl: './layout.css',
 })
 export class Layout {
-  isSidebarOpen = true;
+  isSidebarOpen = false;
 
   toggleSidebar(): void {
     this.isSidebarOpen = !this.isSidebarOpen;
