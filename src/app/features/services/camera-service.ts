@@ -12,7 +12,10 @@ export class CameraService {
     }
 
     try {
-      this.stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      this.stream = await navigator.mediaDevices.getUserMedia({ 
+        // video: true // Use the default camera
+        video: { facingMode: 'environment' }, // Use the back camera if available
+      });
       videoElement.srcObject = this.stream;
       await videoElement.play();
     } catch (err) {
